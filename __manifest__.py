@@ -4,11 +4,17 @@
     'version': '1.0',
     'category': 'Session',
     'author': 'Arib Ansari',
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'web_editor'],
     'assets': {
+        # QUnit test files
         'web.qunit_suite_tests': [
-            'tdd/static/tests/qunit_tests.js',
-        ]
+            'tdd/static/tests/legacy/qunit_tests.js',
+        ],
+
+        # Mocha test files
+        'web_editor.mocha_tests': [
+            'tdd/static/src/js/editor/odoo-editor/test/mocha.test.js',
+        ],
     },
     'installable': True,
     'application': False,
