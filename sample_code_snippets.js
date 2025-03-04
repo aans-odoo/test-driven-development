@@ -191,10 +191,39 @@ describe("Mocha test group", () => {
 
 describe('bold', () => {
     it('should make a few characters bold', async () => {
-        await testEditor(BasicEditor, {
+        await testEditor({
             contentBefore: '<p>ab[cde]fg</p>',
             stepFunction: (editor) => editor.execCommand('bold'),
             contentAfter: `<p>ab<strong>[cde]</strong>fg</p>`,
         });
     })
 })
+
+
+
+
+// -----------------------------------------------------------------------------
+// Web Tour
+// -----------------------------------------------------------------------------
+
+import { registry } from "@web/core/registry";
+
+registry.category("web_tour.tours").add("drop_text_snippet", {
+    url: "/",
+    steps: () => [
+        {
+            content: "Go in Edit mode",
+            trigger: ".o_menu_systray a:contains('Edit')",
+            run: "click",
+        },
+        {
+            content: "Drag text snippet on page",
+            trigger: ".oe_snippet[name='text'] .oe_snippet_thumbnail",
+            run: "drag_and_drop :iframe #wrapwrap > footer",
+        },
+        {
+            content: "Check if text snippet is added",
+            trigger: ":iframe .s_text_snippet",
+        },
+    ]
+});
