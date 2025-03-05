@@ -1,5 +1,6 @@
 from odoo.tests.common import TransactionCase
 from odoo.tests import tagged
+import unittest
 
 @tagged('post_install', '-at_install')
 class ProductTest(TransactionCase):
@@ -90,3 +91,21 @@ class ProductTest(TransactionCase):
                 'type': 'invalid_type',  # This should raise an exception
                 'categ_id': self.category_all.id,
             })
+
+    @unittest.skip("Skipping this test unconditionally")
+    def test_skip_example(self):
+        product = self.product_model.create({
+            'name': 'Skipped Product',
+            'type': 'service',
+            'categ_id': self.category_all.id,
+        })
+        self.assertEqual(product.name, 'Skipped Product', "Product name should be 'Skipped Product'")
+
+    @unittest.skipIf(True, "Skipping this test because the condition is True")
+    def test_skipif_example(self):
+        product = self.product_model.create({
+            'name': 'Conditionally Skipped Product',
+            'type': 'service',
+            'categ_id': self.category_all.id,
+        })
+        self.assertEqual(product.name, 'Conditionally Skipped Product', "Product name should be 'Conditionally Skipped Product'")
