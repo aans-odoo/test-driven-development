@@ -199,6 +199,13 @@ describe('bold', () => {
     })
 })
 
+await testEditor(BasicEditor, {
+    contentBefore: '<p><i class="fa fa-star"></i>[Abc]</p>',
+    contentBeforeEdit: '<p><i class="fa fa-star" contenteditable="false">\u200b</i>[Abc]</p>',
+    stepFunction: (editor) => editor.execCommand("italic"),
+    contentAfterEdit: '<p><i class="fa fa-star" contenteditable="false">\u200b</i><em>[Abc]</em></p>',
+    contentAfter: '<p><i class="fa fa-star"></i><em>[Abc]</em></p>',
+})
 
 
 

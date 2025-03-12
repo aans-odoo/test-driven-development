@@ -1,3 +1,10 @@
+// QUnit was used for unit testing in Odoo, it is now replaced with Hoot but
+// lagacy test cases using QUnit still exist in Odoo codebase.
+
+// This example demonstrate a basic QUnit test to test a list view, showing use
+// of QUnit hook, odoo helper functions, mock server, mock data and mock RPC
+// calls
+
 import { getFixture } from "@web/../tests/helpers/utils";
 import { makeView, setupViewRegistries } from "@web/../tests/views/helpers";
 
